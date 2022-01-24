@@ -10,10 +10,10 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// Drivetrain           drivetrain    1, 11, 10, 20   
-// Swoop                motor_group   6, 7            
-// EddieHall            motor_group   15, 16          
+// Controller1          controller
+// Drivetrain           drivetrain    1, 11, 10, 20
+// Swoop                motor_group   6, 7
+// EddieHall            motor_group   15, 16
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
@@ -72,43 +72,30 @@ void autonomous(void) {
 void usercontrol(void) {
   // User control code here, inside the loop
   while (1) {
-    
-Swoop.setStopping(hold);
-Swoop.setVelocity(100,percent);
-Swoop.setMaxTorque(100,percent);
+
+    Swoop.setStopping(hold);
+    Swoop.setVelocity(100, percent);
+    Swoop.setMaxTorque(100, percent);
 
     if (Controller1.ButtonL1.pressing()) {
-        Controller1.ButtonL1.pressing();
-        Swoop.spin(forward);
+      Controller1.ButtonL1.pressing();
+      Swoop.spin(forward);
     }
-      if (Controller1.ButtonL2.pressing()) {
-        Controller1.ButtonL2.pressing();
-        Swoop.spin(reverse);
-      }
-        Swoop.stop();
+    if (Controller1.ButtonL2.pressing()) {
+      Controller1.ButtonL2.pressing();
+      Swoop.spin(reverse);
+    }
+    Swoop.stop();
 
-        if (Controller1.Axis2.value() > 10) {
-            EddieHall.spin(forward);
-        }
+    if (Controller1.Axis2.value() > 10) {
+      EddieHall.spin(forward);
+    }
 
-        if (Controller1.Axis2.value() < 10) {
-            EddieHall.spin(reverse);
-        }
-          EddieHall.stop();
+    if (Controller1.Axis2.value() < 10) {
+      EddieHall.spin(reverse);
+    }
+    EddieHall.stop();
 
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
